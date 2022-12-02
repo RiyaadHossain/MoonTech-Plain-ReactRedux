@@ -1,5 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { createStore } from 'redux'
+import { productReducer, initialState } from "./reducers/productReducer"
 
-export default configureStore({
-  reducer: {},
-})
+export const store = createStore(productReducer, initialState)

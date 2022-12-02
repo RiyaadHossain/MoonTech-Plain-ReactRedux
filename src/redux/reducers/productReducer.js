@@ -17,7 +17,13 @@ export const productReducer = (state = initialState, action) => {
             }
 
         case REMOVE_FROM_CART:
-            return { ...state };
+            if (exist.quantity === 1) {
+                return { ...state, cart: [...state.cart.filter(product => product._id !== action.payload._id)] }
+            } else {
+                const restProducts = state.cart.filter(product => product._id !== exist._id)
+                exist.quantity--
+                return { ...state, cart: [...restProducts, { ...exist }] }
+            }
 
         case ADD_TO_WISHLIST:
             return { ...state };

@@ -11,9 +11,10 @@ const ProductCard = ({ product }) => {
 
   return (
     <div
-      className='shadow-lg rounded-3xl border  p-3 flex flex-col text-indigo-900'
+      className='shadow-lg rounded-3xl border relative p-3 flex flex-col text-indigo-900'
       key={product._id}
     >
+      {pathname.includes('cart') && <div className="absolute top-3 right-4"><p className="bg-indigo-500 text-white w-7 h-7 rounded-full grid place-items-center">{product.quantity}</p></div>}
       <div className='h-52 w-52 mx-auto'>
         <img src={product.image} alt={product.model} />
       </div>
@@ -21,7 +22,7 @@ const ProductCard = ({ product }) => {
       <p className='text-center font-semibold mb-3'>Rating: {product.rating}</p>
       <div className=' flex-1'>
         <ul className='space-y-2'>
-          {product.keyFeature.map((feature, i) => {
+          {product?.keyFeature.map((feature, i) => {
             return <li key={i} className='text-sm '>{feature}</li>;
           })}
         </ul>

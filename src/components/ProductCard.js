@@ -27,7 +27,7 @@ const ProductCard = ({ product }) => {
           })}
         </ul>
       </div>
-      {pathname === '/' ?
+      {!pathname.includes('cart') ?
         <div className='flex gap-2 mt-5'>
           <button onClick={() => dispatch(addToCart(product))} className='bg-indigo-500 rounded-full py-1 px-2 flex-1 text-white text-bold'>
             Add to cart

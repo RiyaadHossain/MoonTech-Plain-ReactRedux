@@ -18,7 +18,7 @@ const Navbar = () => {
         <Link to='/top-rated'>
           <li>Top Rated</li>
         </Link>
-        <li>FFF
+        <li>
           <Link to='/about'>About</Link>
         </li>
         <Link to='/'>

@@ -1,12 +1,16 @@
-import { ADD_TO_CART, ADD_TO_WISHLIST, REMOVE_FROM_CART, REMOVE_FROM_WISHLIST } from "../actionTypes/productType";
+import { ADD_TO_CART, ADD_TO_WISHLIST, GET_PRODUCTS, REMOVE_FROM_CART, REMOVE_FROM_WISHLIST } from "../actionTypes/productType";
 
-export const initialState = { cart: [] }
+export const initialState = { products: [], cart: [] }
 
 export const productReducer = (state = initialState, action) => {
 
     const exist = state.cart.find(product => product._id === action.payload._id)
-    console.log(exist)
+
     switch (action.type) {
+
+        case GET_PRODUCTS:
+            return { ...state, products: action.payload }
+        
         case ADD_TO_CART:
             if (!exist) {
                 return { ...state, cart: [...state.cart, { ...action.payload, quantity: 1 }] };

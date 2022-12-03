@@ -2,7 +2,7 @@ import React from "react";
 import { BiListPlus } from "react-icons/bi";
 import { useDispatch } from "react-redux"
 import { useLocation } from "react-router-dom";
-import { addToCart, removeFromCart } from "../redux/actions/productAction";
+import { addToCart, addToWishlist, removeFromCart } from "../redux/actions/productAction";
 
 const ProductCard = ({ product }) => {
 
@@ -35,6 +35,7 @@ const ProductCard = ({ product }) => {
           <button
             title='Add to wishlist'
             className='bg-indigo-500  py-1 px-2 rounded-full'
+            onClick={() => dispatch(addToWishlist(product))}
           >
             <BiListPlus className='text-white' />
           </button>

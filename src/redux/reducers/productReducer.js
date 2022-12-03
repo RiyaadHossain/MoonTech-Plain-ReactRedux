@@ -1,6 +1,6 @@
 import { ADD_TO_CART, ADD_TO_WISHLIST, GET_PRODUCTS, REMOVE_FROM_CART, REMOVE_FROM_WISHLIST } from "../actionTypes/productType";
 
-export const initialState = { products: [], cart: [] }
+export const initialState = { products: [], cart: [], wishlist: [] }
 
 export const productReducer = (state = initialState, action) => {
 
@@ -30,10 +30,10 @@ export const productReducer = (state = initialState, action) => {
             }
 
         case ADD_TO_WISHLIST:
-            return { ...state };
+            return { ...state, wishlist: [...state.wishlist, action.payload] };
 
         case REMOVE_FROM_WISHLIST:
-            return { ...state };
+            return { ...state, wishlist: [...state.wishlist.filter(product => product._id !== action.payload._id)] };
 
         default:
             return state;
